@@ -9,6 +9,11 @@ public class SauronSingleton {
 		System.out.println("Instantiated: " + name);
 	}
 	
+	/*
+	 * Remember!
+	 * This static function will always return a reference to
+	 * the same instance of the object that we have instantiated.
+	 */
 	public static SauronSingleton getInstance() {
 		if (singleton == null) {
 			singleton = new SauronSingleton();
