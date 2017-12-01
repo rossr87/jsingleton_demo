@@ -13,8 +13,10 @@ public class SauronSingleton {
 	 * Remember!
 	 * This static function will always return a reference to
 	 * the same instance of the object that we have instantiated.
+	 * 
+	 * Added the synchronized keyword to avoid multithreaded race condition.
 	 */
-	public static SauronSingleton getInstance() {
+	public static synchronized SauronSingleton getInstance() {
 		if (singleton == null) {
 			singleton = new SauronSingleton();
 		} else {
