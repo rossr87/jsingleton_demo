@@ -1,7 +1,13 @@
 
 public class SauronSingleton {
 	private String name = "One ring to rule them all!";
-	private static SauronSingleton singleton;
+	/*
+	 * Because we are using "eager instantiation" by initializing the variable, the
+	 * instance variable is initialized when the class is loaded.
+	 * The JVM will prevent this static instance variable from being accessed by any thread
+	 * when the class is loaded.
+	 */
+	private static SauronSingleton singleton = new SauronSingleton();
 	private static int object_counter;
 	
 	private SauronSingleton() {
@@ -14,14 +20,10 @@ public class SauronSingleton {
 	 * This static function will always return a reference to
 	 * the same instance of the object that we have instantiated.
 	 * 
-	 * Added the synchronized keyword to avoid multithreaded race condition.
+	 * Removed the synchronized keyword and initialized the singleton
+	 * instance variable using eager instantiation.
 	 */
-	public static synchronized SauronSingleton getInstance() {
-		if (singleton == null) {
-			singleton = new SauronSingleton();
-		} else {
-			System.out.println("NO! There is only One ring to rule them all");
-		}
+	public static SauronSingleton getInstance() {
 		return singleton;
 	}
 	
